@@ -1,0 +1,39 @@
+﻿@using EntityLayer.Concrete
+@model List<Writer>
+
+@{
+    ViewData["Title"] = "WriterList";
+    Layout = "~/Views/Shared/AdminView.cshtml";
+}
+
+<h1>Yazar Listesi</h1>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Yazar İsmi</th>
+        <th>Yazar Maili</th>
+        <th>Durum</th>
+        <th>Başvuru Tarihi</th>
+        <th>Sil</th>
+    </tr>
+    @if (Model != null)
+    {
+        @foreach (var item in Model)
+        {
+            @if (item.WriterStatus == true)
+            {
+                <tr>
+                    <td>@item.WriterName</td>
+                    <td>@item.WriterMail</td>
+                    <td>Beklemede</td>
+                    <td>@item.CreateDate</td>
+                    <td></td>
+                    <td><a href="@Url.Action("WriterDelete", "Admin", new { deneme = item.WriterName})" class="btn btn-warning">Sil</a></td>
+                    @*<td><a href="@Url.Action("WriterDelete", "Admin", new Writer { WriterID = item.WriterID, WriterMail = item.WriterMail, WriterName = item.WriterName, WriterStatus = false, CreateDate = item.CreateDate })" class="btn btn-warning">Sil</a></td>*@
+                    @*
+        <td><a href="/Blog/EditBlog/@item.BlogID" class="btn btn-warning">Düzenle</a></td>*@
+                </tr>
+            }
+        }
+    }
+</table>

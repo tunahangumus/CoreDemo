@@ -1,0 +1,27 @@
+﻿@model PasswordChangeModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/WriterView.cshtml";
+}
+
+<form action="Index" id="Index" method="post">
+    <span asp-validation-for="@Model.currentPassword" class="text-danger"></span>
+    <label for="currentPassword">Şu anki şifreniz:</label>
+    <input type="password" id="currentPassword" name="currentPassword" class="form-control">
+    <br>
+
+    <span asp-validation-for="@Model.newPassword" class="text-danger"></span>
+    <label for="newPassword">Yeni Şifre:</label>
+    <input type="password" id="newPassword" name="newPassword" class="form-control">
+    <br>
+
+    <span asp-validation-for="@Model.confirmNewPassword" class="text-danger"></span>
+    <label for="confirmNewPassword">Yeni Şifre Tekrar:</label>
+    <input type="password" id="confirmNewPassword" name="confirmNewPassword" class="form-control">
+    <br>
+
+    <div asp-validation-summary="ModelOnly"></div>
+
+    <button type="submit" class="btn btn-success">Güncelle</button>
+</form>

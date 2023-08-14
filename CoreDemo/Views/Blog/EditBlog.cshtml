@@ -1,0 +1,37 @@
+﻿@model EditModel
+@{
+    ViewData["Title"] = "EditBlog";
+    Layout = "~/Views/Shared/WriterView.cshtml";
+}
+
+<h1>Blog Düzenleme Sayfası</h1>
+
+<form id="EditBlog" method="post">
+    @Html.HiddenFor(x => x.blog.BlogID)
+    @Html.HiddenFor(x => x.blog.BlogStatus)
+    @Html.HiddenFor(x => x.blog.WriterID)
+    @Html.HiddenFor(x => x.blog.BlogCreateDate)
+    @Html.HiddenFor(x=> x._categoryvalues)
+
+    <span asp-validation-for="@Model.blog.BlogTitle" class="text-danger"></span>
+    <label for="blog.BlogTitle">Blog Başlığı:</label>
+    <input type="text" id="BlogTitle" name="blog.BlogTitle" class="form-control" value="@Model.blog.BlogTitle">
+    <br>
+
+    <span asp-validation-for="@Model.blog.BlogImage" class="text-danger"></span>
+    <label for="blog.BlogImage">Blog Görseli:</label>
+    <input type="text" id="BlogImage" name="blog.BlogImage" value="@Model.blog.BlogImage" class="form-control">
+    <br>
+
+    @Html.Label("Kategori")
+    <br />
+    @Html.DropDownListFor(x=>x.blog.CategoryID, Model._categoryvalues)
+    <br />
+    <br>
+    <span asp-validation-for="@Model.blog.BlogContent" class="text-danger"></span>
+    <label for="blog.BlogContent">Blog Content:</label>
+    <textarea id="blogContent" name="blog.BlogContent" class="form-control" rows="10">@Model.blog.BlogContent</textarea>
+    <br>
+    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+    <button type="submit" class="btn btn-success">Güncelle</button>
+</form>

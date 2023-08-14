@@ -1,0 +1,47 @@
+﻿@model EmailModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="zxx">
+
+<body>
+	<section class="main-content-w3layouts-agileits">
+
+		<h3 class="tittle">Yazar Olmak İster Misiniz?</h3>
+		<p class="sub text-center">Aşağıdaki formu doldurarak başvuruda bulunabilirsiniz</p>
+		
+		
+		<div class="container">
+			@if (TempData["Message"] != null)
+			{
+				<div class="alert alert-info">@TempData["Message"]</div>
+			}
+			<div class="contact_grid_right">
+				<form asp-action="Index" method="post">
+					<div class="row contact_left_grid">
+						<div class="col-md-6 con-left">
+							<div class="form-group">
+								<input type="email" class="form-control" id="input3" asp-for="@Model.Mail" placeholder="E-Mail">
+							</div>
+						</div>
+						<div class="col-md-6 con-right">
+							<div class="form-group">
+								<input type="text" class="form-control" id="input4" asp-for="@Model.Content" placeholder="Kısaca neden yazar olmak istiyorsunuz?">
+							</div>
+							<input class="form-control" type="submit" value="Gönder">
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+	<!--//main-->
+	<!--footer-->
+
+</body>
+
+</html>
+

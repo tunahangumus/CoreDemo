@@ -1,0 +1,29 @@
+﻿<div class="col-md-4 top-forms text-center mt-lg-3 mt-md-1 mt-0">
+	@if (User.Identity.Name != null)
+	{
+		<span>Hoşgeldin @User.Identity.Name!</span>
+		<br></br>
+	}
+	else{
+		<span>Hoşgeldiniz...</span>
+		<br></br>
+		<span class="mx-lg-3 mx-md-2  mx-1">
+			<a href="/Login/Login">
+				Giriş Yap
+			</a>
+		</span>
+		<span class="mx-lg-5 mx-md-2  mx-1">
+			<a href="/RegisterUser/Index">
+				Kayıt Ol
+			</a>
+		</span>
+	}
+	<span>
+		<a asp-controller="Login" asp-action="Logout" asp-route-returnUrl="~/Blog/Index">
+			<span>
+					<i class="far fa-enter"></i> Çıkış Yap
+			</span>
+		</a>
+	</span>
+	
+</div>

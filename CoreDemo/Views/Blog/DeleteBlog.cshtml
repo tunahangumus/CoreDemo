@@ -1,0 +1,41 @@
+﻿@model BlogModel
+@{
+    ViewData["Title"] = "DeleteBlog";
+    Layout = "~/Views/Shared/WriterView.cshtml";
+}
+
+<h1>Bu bloğu silmek istediğinize emin misiniz?</h1>
+
+<div>
+    <h4>Blog</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Blog İsmi:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BlogTitle)
+        </dd>
+        <dt class="col-sm-2">
+            Blog İçeriği:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BlogContent)
+        </dd>
+        <dt class="col-sm-2">
+          Blog Oluşturulma Tarihi:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BlogCreateDate)
+        </dd>
+        <dt class="col-sm-2">
+            Blog Kategorisi:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Category.CategoryName)
+        </dd>
+    </dl>
+    <td><a href="@Url.Action("ConfirmDeleteBlog", "Blog", Model)" class="btn btn-danger">Sil</a></td>
+    <td><a href="/Blog/BlogListByWriter" class="btn btn-warning">İptal</a></td>
+</div>
+

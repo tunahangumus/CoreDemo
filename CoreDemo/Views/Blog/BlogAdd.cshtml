@@ -1,0 +1,40 @@
+﻿@model BlogModel
+
+@{
+	ViewData["Title"] = "BlogAdd";
+	Layout = "~/Views/Shared/WriterView.cshtml";
+}
+
+<h1>Blok Ekleme Sayfası</h1>
+<br />
+
+@using (Html.BeginForm("BlogAdd", "Blog", FormMethod.Post))
+{
+
+	<input type="text" id="WriterID" name="WriterID" class="form-control" value="@ViewBag.WriterID" style="display: none;">
+	<input type="text" id="BlogStatus" name="BlogStatus" class="form-control" value = "true" style="display: none;">
+	<input type="text" id="BlogCreateDate" name="BlogCreateDate" class="form-control" value="@DateTime.Now.ToString()" style="display: none;">
+
+	<span asp-validation-for="@Model.BlogTitle?" class="text-danger"></span>
+	<label for="blog.BlogTitle">Blog Başlığı:</label>
+	<input type="text" id="BlogTitle" name="BlogTitle" class="form-control" value="@Model?.BlogTitle">
+	<br>
+
+	<span asp-validation-for="@Model.BlogImage" class="text-danger"></span>
+	<label for="blog.BlogImage">Blog Görseli:</label>
+	<input type="text" id="BlogImage" name="BlogImage" value="@Model?.BlogImage" class="form-control">
+	<br>
+
+	@Html.Label("Kategori")
+	<br />
+	@Html.DropDownListFor(x=>x.CategoryID, (List<SelectListItem>)ViewBag.cv)
+	<br />
+	<br />
+	<span asp-validation-for="@Model.BlogContent" class="text-danger"></span>
+	<label for="blog.BlogContent">Blog Content:</label>
+	<textarea id="blogContent" name="BlogContent" class="form-control" rows="10">@Model?.BlogContent</textarea>
+	<br>
+	<div class="text-danger" asp-validation-summary="ModelOnly"></div>
+
+	<button class="btn btn-info">Yazıyı Kaydet</button>
+}

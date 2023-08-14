@@ -1,0 +1,85 @@
+﻿@model UserSignInViewModel
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+
+
+
+
+<!DOCTYPE html>
+<html lang="zxx">
+<body>
+	<!--Header-->
+	<section class="main-content-w3layouts-agileits">
+		<div class="container">
+			<h3 class="tittle">Giriş Yap</h3>
+			<div class="row inner-sec">
+				<div class="login p-5 bg-light mx-auto mw-100">
+					<form asp-action="Login">
+						<div class="form-group">
+							<span asp-validation-for="UserName" class="text-danger"></span>
+							<input type="text" class="form-control" id="exampleInputUsername1" asp-for="UserName" placeholder="Kullanıcı Adı">
+						</div>
+
+						<div class="form-group">
+							<span asp-validation-for="Password" class="text-danger"></span>
+							<input type="password" class="form-control" id="exampleInputEmail1" asp-for="Password" placeholder="Şifre">
+						</div>
+						<div asp-validation-summary="ModelOnly"></div>
+						<button type="submit">Giriş Yap</button>
+						<div class="text-center mt-4 font-weight-light">
+							<a href="~/PasswordChange/ForgetPassword" class="text-primary">Şifreni mi unuttun?</a>
+						</div>
+						
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+	<script src="js/jquery-2.2.3.min.js"></script>
+	<!-- //js -->
+	<!--/ start-smoth-scrolling -->
+	<script src="js/move-top.js"></script>
+	<script src="js/easing.js"></script>
+	<script>
+		jQuery(document).ready(function ($) {
+			$(".scroll").click(function (event) {
+				event.preventDefault();
+				$('html,body').animate({
+					scrollTop: $(this.hash).offset().top
+				}, 900);
+			});
+		});
+	</script>
+	<!--// end-smoth-scrolling -->
+
+	<script>
+		$(document).ready(function () {
+			/*
+									var defaults = {
+											containerID: 'toTop', // fading element id
+										containerHoverID: 'toTopHover', // fading element hover id
+										scrollSpeed: 1200,
+										easingType: 'linear'
+										};
+									*/
+
+			$().UItoTop({
+				easingType: 'easeOutQuart'
+			});
+
+		});
+	</script>
+	<a href="#home" class="scroll" id="toTop" style="display: block;">
+		<span id="toTopHover" style="opacity: 1;"> </span>
+	</a>
+
+	<!-- //Custom-JavaScript-File-Links -->
+	<script src="js/bootstrap.js"></script>
+
+
+</body>
+
+</html>

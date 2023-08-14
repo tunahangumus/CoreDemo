@@ -1,0 +1,32 @@
+﻿@using CoreDemo.Controllers
+@model List<Class1>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/WriterView.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Adı Soyadı</th>
+		<th>Sil</th>
+		<th>Düzenle</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ID</td>
+            <td>@item.Name</td>
+            <td>
+                <form asp-controller="EmployeeTest" asp-action="DeleteEmployee" asp-route-id="@item.ID">
+                    <button type="submit" class="btn btn-outline-danger">Sil</button>
+                </form>
+            </td>
+            <td><a href="/EmployeeTest/EditEmployee/@item.ID" class="btn btn-outline-danger">Düzenle</a></td>
+        </tr>
+    }
+</table>
+<a href="/EmployeeTest/AddEmployee" class="btn btn-outline-primary">Yeni Çalışan Girişi</a>
+

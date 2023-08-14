@@ -1,0 +1,29 @@
+﻿@model ProfileEditModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/WriterView.cshtml";
+}
+
+<h1>Profil Düzenleme Sayfası</h1>
+
+
+<form action="Index" id="Index" method="post">
+@*    @Html.HiddenFor(x => x.nameSurname)
+    @Html.HiddenFor(x => x.email)*@
+    
+    <label for="nameSurname">İsim Soyisim:</label>
+    <input type="text" id="nameSurname" name="nameSurname" class="form-control" value="@Model.nameSurname">
+    <br>
+
+    <label for="userName">Kullanıcı Adı:</label>
+    <input type="text" id="userName" name="userName" class="form-control" value="@Model.userName">
+    <br>
+
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="email" class="form-control" value="@Model.email">
+    <br>
+    <div asp-validation-summary="ModelOnly"></div>
+
+    <button type="submit" class="btn btn-success">Güncelle</button>
+</form>
